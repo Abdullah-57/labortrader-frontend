@@ -1,0 +1,498 @@
+/* Profile previews share the site palette; their layout starts at phone width. */
+.roleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+.roleCard[open] {
+  grid-column: 1 / -1;
+}
+.roleSummary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 18px;
+  grid-template-rows: minmax(28px, auto) 1fr auto;
+  gap: 14px 8px;
+  padding: 16px;
+  cursor: pointer;
+  list-style: none;
+}
+.roleSummary::-webkit-details-marker {
+  display: none;
+}
+.roleIcon {
+  grid-column: 2;
+  grid-row: 1;
+  width: 18px;
+  height: 18px;
+  color: var(--lt-steel);
+}
+.roleLabel {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--lt-muted);
+}
+.roleHeadline {
+  grid-column: 1 / -1;
+  font-size: 21px;
+  line-height: 1.2;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}
+.roleAction {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  color: var(--lt-accent);
+  font-size: 13px;
+  font-weight: 650;
+}
+.roleAction svg {
+  width: 16px;
+  height: 16px;
+}
+.roleCard[open] .roleAction svg {
+  rotate: 180deg;
+}
+.roleSummary:active {
+  background: rgb(231 101 50 / 8%);
+  transform: scale(0.98);
+}
+.roleCard[open] .roleSummary {
+  gap: 10px;
+}
+.roleBody > a {
+  max-width: calc(100% - 36px);
+}
+@media (max-width: 359px) {
+  .roleSummary {
+    padding: 12px;
+  }
+  .roleHeadline {
+    font-size: 19px;
+  }
+}
+@media (max-width: 639px) {
+  .flowCard > summary {
+    gap: 10px;
+    padding: 18px 14px;
+  }
+  .flowCard > summary > span:first-child {
+    display: none;
+  }
+  .flowCard > summary > svg:first-of-type {
+    display: none;
+  }
+}
+@media (min-width: 900px) {
+  .roleGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .roleSummary {
+    padding: 24px;
+  }
+  .roleLabel {
+    font-size: 12px;
+  }
+  .roleHeadline {
+    font-size: 26px;
+  }
+}
+.roleCard {
+  align-self: stretch;
+  border-radius: var(--lt-radius);
+  overflow: hidden;
+}
+.roleCard:not([open]) > .roleSummary {
+  height: 100%;
+}
+
+.roleBody {
+  padding: 20px 0;
+  border-top: 1px solid var(--lt-content-border);
+}
+
+.roleBody > p,
+.roleBody > a {
+  margin-inline: 18px;
+}
+
+.profile {
+  min-width: 0;
+  margin-top: 24px;
+  overflow: hidden;
+  border-block: 1px solid var(--lt-content-border);
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 3%), transparent 60%),
+    var(--lt-dark);
+  color: var(--lt-ink);
+}
+
+.profileBody,
+.listing,
+.credentials {
+  padding: 20px 18px;
+}
+
+.exampleLabel,
+.label {
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.5;
+  color: var(--lt-muted);
+}
+
+.exampleLabel {
+  margin-bottom: 14px;
+  color: var(--lt-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.identity > div {
+  min-width: 0;
+}
+
+.avatar {
+  position: relative;
+  flex: 0 0 64px;
+  height: 64px;
+  overflow: hidden;
+  border: 1px solid var(--lt-content-border);
+  border-radius: 12px;
+  background: var(--lt-panel);
+}
+
+.organizationImage {
+  object-fit: contain;
+  padding: 4px;
+}
+
+.personImage {
+  object-fit: cover;
+}
+
+.identity h3 {
+  font-size: 23px;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.specialty {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--lt-muted);
+}
+
+.location {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin-top: 14px;
+  color: var(--lt-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.location svg {
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+}
+
+.overview {
+  max-width: 760px;
+  margin-top: 14px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.history {
+  margin-top: 22px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 10px;
+  border: 1px solid var(--lt-content-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgb(255 255 255 / 3%);
+}
+
+.stats > div {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 14px;
+}
+
+.stats > div:nth-child(even) {
+  border-left: 1px solid var(--lt-content-border);
+}
+
+.stats > div:nth-child(n + 3) {
+  border-top: 1px solid var(--lt-content-border);
+}
+
+.stats dd {
+  order: -1;
+  color: var(--lt-accent);
+  font-size: clamp(24px, 6.8vw, 28px);
+  line-height: 1.1;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+}
+
+.stats dt {
+  margin-top: 6px;
+  color: var(--lt-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.skills {
+  margin-top: 20px;
+}
+
+.skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 9px;
+  list-style: none;
+}
+
+.skills li {
+  padding: 5px 9px;
+  border: 1px solid var(--lt-content-border);
+  border-radius: var(--lt-control-radius);
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--lt-muted);
+}
+
+.activity,
+.credentials {
+  border-top: 1px solid var(--lt-content-border);
+}
+
+.availability {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--lt-accent);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.availability::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.listing h4 {
+  margin-top: 10px;
+  font-size: 20px;
+  line-height: 1.25;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+}
+
+.listingDetail {
+  margin-top: 8px;
+  color: var(--lt-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.terms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.terms dt {
+  color: var(--lt-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.terms dd {
+  margin-top: 4px;
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 650;
+}
+
+.statuses {
+  margin-top: 12px;
+  list-style: none;
+}
+
+.statuses li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding-block: 10px;
+}
+
+.statuses li + li {
+  border-top: 1px solid var(--lt-content-border);
+}
+
+.statuses svg {
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  color: var(--lt-accent);
+}
+
+.credentialName,
+.credentialState {
+  display: block;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.credentialState {
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--lt-muted);
+}
+
+.activitySwitch {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  min-width: 0;
+  margin-top: 20px;
+  padding: 4px;
+  border: 1px solid var(--lt-content-border);
+  border-radius: 9px;
+}
+
+.profile .activitySwitch button {
+  min-width: 0;
+  height: auto;
+  padding: 10px 6px;
+  white-space: normal;
+  line-height: 1.35;
+}
+
+.exampleNote {
+  border-top: 1px solid var(--lt-content-border);
+  padding-inline: 18px;
+  color: var(--lt-muted);
+}
+
+.exampleNote summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 12px;
+}
+
+.exampleNote summary::-webkit-details-marker {
+  display: none;
+}
+
+.exampleNote svg {
+  width: 16px;
+  height: 16px;
+}
+
+.exampleNote[open] svg {
+  rotate: 180deg;
+}
+
+.exampleNote p {
+  padding-bottom: 16px;
+  max-width: 760px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+  .roleBody {
+    padding: 28px;
+  }
+
+  .roleBody > p,
+  .roleBody > a {
+    margin-inline: 0;
+  }
+
+  .profile {
+    border: 1px solid var(--lt-content-border);
+    border-radius: var(--lt-radius);
+  }
+
+  .profileBody,
+  .listing,
+  .credentials {
+    padding: 24px;
+  }
+
+  .avatar {
+    flex-basis: 88px;
+    height: 88px;
+  }
+
+  .identity h3 {
+    font-size: 30px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .stats > div:nth-child(n + 2) {
+    border-top: 0;
+    border-left: 1px solid var(--lt-content-border);
+  }
+
+  .activitySwitch {
+    max-width: 400px;
+  }
+
+  .exampleNote {
+    padding-inline: 24px;
+  }
+}
+
+@media (min-width: 900px) {
+  .activity {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+  }
+
+  .credentials {
+    border-top: 0;
+    border-left: 1px solid var(--lt-content-border);
+  }
+}

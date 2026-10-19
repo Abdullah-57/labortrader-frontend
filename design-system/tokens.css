@@ -1,0 +1,50 @@
+/* Approved Industrial Glass design. Both the design lab and public pages read these values. */
+:root {
+  --lt-accent: #e76532;
+  --lt-steel: #a9bfd2;
+  --lt-dark: #181a1d;
+  --lt-hero-base: #191b1e;
+  --lt-panel-rgb: 26, 28, 32;
+  --lt-panel: #282c32;
+  --lt-content-base: #22252a;
+  --lt-ink: #f4f1eb;
+  --lt-muted: #c3c6cb;
+  --lt-content-ink: #f3efe8;
+  --lt-content-muted: #c1c5ca;
+  --lt-border: rgb(255 255 255 / 18%);
+  --lt-content-border: rgb(238 235 229 / 15%);
+  --lt-paper: #fbf7ee;
+  --lt-paper-ink: #25282d;
+  --lt-beige: #d2bea1;
+  --lt-radius: 16px;
+  --lt-control-radius: 5px;
+  --lt-shell-max: 1320px;
+  --lt-gutter: 48px;
+  --lt-section-space: 56px;
+  --lt-title-size: clamp(42px, 5vw, 72px);
+  --lt-heading-size: clamp(36px, 3.7vw, 54px);
+  --lt-body-size: 16px;
+  --lt-motion-time: 180ms;
+  --lt-photo-opacity: 0.48;
+  --lt-photo-travel: clamp(140px, 28svh, 280px);
+}
+@media (max-width: 1050px) {
+  :root {
+    --lt-gutter: 28px;
+  }
+}
+@media (max-width: 760px) {
+  :root {
+    --lt-gutter: 20px;
+    --lt-section-space: 42px;
+    --lt-title-size: clamp(38px, 10vw, 54px);
+    --lt-heading-size: 36px;
+    --lt-photo-travel: clamp(100px, 20svh, 160px);
+  }
+}
+
+@media (max-width: 460px) {
+  :root {
+    --lt-heading-size: 40px;
+  }
+}

@@ -1,0 +1,216 @@
+/* Keep the native picker and accessible select; the visible value can wrap. */
+/* Base UI keeps a native input beside its visible checkbox. Preserve its form
+   behavior while preventing native chrome from painting in glass panels. */
+.lt-site [data-slot='checkbox'] + input[type='checkbox'] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lt-site [data-slot='native-select-wrapper'][data-wrap-label] {
+  display: grid;
+  position: relative;
+}
+.lt-site [data-wrap-label] > select {
+  grid-area: 1 / 1;
+  height: 100%;
+  min-height: 48px;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.lt-site .native-select-value {
+  grid-area: 1 / 1;
+  align-self: center;
+  min-width: 0;
+  padding: 13px 38px 13px 12px;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--lt-accent);
+  pointer-events: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.lt-site .native-select-value[data-empty='true'] {
+  color: var(--lt-muted);
+}
+.lt-site [data-wrap-label] option {
+  color: CanvasText;
+  -webkit-text-fill-color: CanvasText;
+}
+.lt-site [data-slot='field'],
+.lt-site fieldset,
+.lt-site legend {
+  min-width: 0;
+  max-width: 100%;
+}
+.lt-site legend,
+.lt-site [data-slot='field-label'] {
+  white-space: normal;
+}
+.lt-site .lt-form-panel :is(h2, h3) {
+  overflow-wrap: anywhere;
+}
+.lt-site .lt-form-panel [data-slot='button'] {
+  white-space: normal;
+  height: auto;
+}
+.lt-site #full-registration-details > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 20px;
+  gap: 12px;
+  padding: 18px 14px;
+  align-items: start;
+}
+.lt-site #full-registration-details > summary > span:last-child {
+  width: 20px;
+  height: 24px;
+  border: 0;
+  background: transparent;
+}
+.lt-site #full-registration-details > section {
+  padding: 18px 14px;
+}
+.lt-site .lt-state-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.lt-site .lt-state-tags button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--lt-accent);
+  border-radius: var(--lt-control-radius);
+  color: var(--lt-accent);
+  font-size: 14px;
+}
+@media (max-width: 639px) {
+  .lt-site .lt-form-benefits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .lt-site .lt-form-benefits > div {
+    min-width: 0;
+    padding: 12px;
+    border-radius: var(--lt-radius);
+  }
+  .lt-site .lt-form-benefits > div:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+  .lt-site #audienceType > div:first-of-type {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .lt-site #audienceType .intent-card {
+    padding: 12px;
+  }
+  .lt-site #audienceType .intent-card > span:first-of-type {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.4;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .lt-site #audienceType .intent-card > span:last-of-type {
+    display: none;
+  }
+  .lt-site .lt-form-panel {
+    padding: 18px 14px;
+  }
+  .lt-site #full-registration-details {
+    margin-inline: -14px;
+    border-inline: 0;
+  }
+  .lt-site .lt-form-section {
+    padding: 20px 0;
+    border-inline: 0;
+    background: transparent;
+  }
+  .lt-site .lt-form-section > div:first-child {
+    gap: 10px;
+  }
+  .lt-site .lt-form-section fieldset {
+    padding: 16px 0;
+    border-inline: 0;
+  }
+  .lt-site .lt-form-section legend {
+    padding: 0;
+  }
+  .lt-site .lt-form-panel .intent-card {
+    padding: 14px;
+  }
+  .lt-site .lt-form-panel .intent-card strong {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+/* Independent, easy-to-tap communication preferences. */
+.lt-site .lt-consent-options {
+  display: grid;
+  gap: 10px;
+  border: 0;
+  padding: 0;
+}
+.lt-site .lt-consent-options legend {
+  padding: 0 0 12px;
+  font-size: 16px;
+  font-weight: 650;
+}
+.lt-site .lt-consent-options legend span {
+  margin-left: 6px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--lt-muted);
+}
+.lt-site .lt-consent-option {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--lt-content-border);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 3%);
+}
+.lt-site .lt-consent-option [data-slot='checkbox'] {
+  margin-top: 2px;
+  width: 22px;
+  height: 22px;
+}
+.lt-site .lt-consent-option label {
+  display: contents;
+  min-width: 0;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--lt-muted);
+}
+.lt-site .lt-consent-option strong {
+  display: block;
+  align-self: center;
+  font-size: 14px;
+  color: var(--lt-ink);
+}
+.lt-site .lt-consent-option a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.lt-site .lt-consent-option:has([data-checked]) {
+  border-color: rgb(231 101 50 / 55%);
+  background: rgb(231 101 50 / 5%);
+}
+.lt-site .lt-consent-option:has(label:active) {
+  border-color: var(--lt-accent);
+}
+
+.lt-site .lt-consent-option label > span {
+  grid-column: 1 / -1;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--lt-muted);
+}

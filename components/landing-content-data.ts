@@ -1,0 +1,150 @@
+import {
+  Building2,
+  Cable,
+  ClipboardCheck,
+  Droplets,
+  Flame,
+  HardHat,
+  House,
+  Landmark,
+  Network,
+  Snowflake,
+  Store,
+  UserRound,
+  UsersRound,
+  Wallet,
+  Wrench,
+} from 'lucide-react';
+
+export const paths = [
+  {
+    role: 'Worker',
+    title: 'Your skills. Your rate.',
+    body: 'Find W-2 opportunities that fit your availability. Build your experience and ratings.',
+    href: '/for-workers',
+    cta: 'See Worker Benefits',
+    compactCta: 'See benefits',
+    icon: UserRound,
+  },
+  {
+    role: 'Independent Contractor',
+    title: 'Fill your schedule.',
+    body: 'Find projects that fit your license, service area, and price.',
+    href: '/for-contractors',
+    cta: 'Plan Your Next Project',
+    compactCta: 'Find projects',
+    icon: HardHat,
+  },
+  {
+    role: 'Service Business',
+    title: 'Keep your crews booked.',
+    compactTitle: 'Keep crews booked.',
+    body: 'Fill open crew time, add skilled help, and take on bigger contracts.',
+    href: '/for-businesses',
+    cta: 'Grow Your Business',
+    compactCta: 'Grow your business',
+    icon: Building2,
+  },
+  {
+    role: 'Hiring Organization',
+    title: 'Build a team you can count on.',
+    compactTitle: 'Build your crew.',
+    body: 'Hire proven people. Build your hiring and confirmed-payment record.',
+    href: '/for-hiring-firms',
+    cta: 'Build Your Hiring Network',
+    compactCta: 'Start hiring',
+    icon: Network,
+  },
+  {
+    role: 'Client & Project Owner',
+    title: 'The right pro for your project.',
+    body: 'Find qualified providers for repairs, installations, and larger projects. Keep the scope, agreement, and completion record together.',
+    href: '/for-clients',
+    cta: 'Explore Project Support',
+    compactCta: 'Find a pro',
+    icon: House,
+  },
+];
+
+export const industries = [
+  {
+    title: 'HVAC & Refrigeration',
+    body: 'Service calls. System installs. Commercial refrigeration.',
+    href: '/trades/hvac',
+    icon: Snowflake,
+  },
+  {
+    title: 'Electrical',
+    body: 'Apprentices to licensed contractors. High and low voltage.',
+    href: '/trades/electrical',
+    icon: Cable,
+  },
+  {
+    title: 'Plumbing & Pipefitting',
+    body: 'Residential service. Commercial systems. Industrial pipe.',
+    href: '/trades/plumbing',
+    icon: Droplets,
+  },
+  {
+    title: 'Oil & Gas',
+    body: 'Field operations. Maintenance. Pipeline and plant.',
+    href: '/industries/oil-gas',
+    icon: Flame,
+  },
+  {
+    title: 'Other Skilled Trades',
+    body: 'Welding, roofing, construction specialties, and more.',
+    href: '/trades/other',
+    icon: Wrench,
+  },
+];
+
+export const advantages = [
+  {
+    title: 'Find the right fit.',
+    body: 'Match opportunities by skill, location, availability, timing, and price.',
+    icon: UsersRound,
+  },
+  {
+    title: 'Build a record people can use.',
+    body: 'Completed engagements add documented history, ratings, hours, and repeat-hire records.',
+    icon: ClipboardCheck,
+  },
+  {
+    title: 'Keep your account without a monthly fee.',
+    body: 'Posting and contract charges are shown before you commit.',
+    icon: Wallet,
+  },
+  {
+    title: 'Spend less time on back-office tasks.',
+    body: 'Keep requirements, agreements, onboarding, reporting, and closeout tied to the engagement.',
+    icon: Building2,
+  },
+];
+
+export const support = [
+  {
+    title: 'Pro Shop',
+    body: 'Tools, supplies, training, and services for the trades.',
+    href: '/pro-shop',
+    icon: Store,
+  },
+  {
+    title: 'Partners',
+    body: 'Bring your capabilities to a growing marketplace.',
+    href: '/partners',
+    icon: Network,
+  },
+  {
+    title: 'Investors',
+    body: 'Explore the opportunity behind LaborTrader.',
+    href: '/investors',
+    icon: Landmark,
+  },
+  {
+    title: 'Industry Services',
+    body: 'Insurance, licensing, benefits, and beyond.',
+    href: '/contact',
+    icon: Wrench,
+  },
+];
