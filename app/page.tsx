@@ -33,7 +33,7 @@ export default async function Home() {
     : locationContext.location;
 
   return (
-    <LandingSurface>
+    <LandingSurface background="none">
       <SiteHeader ctaHref="#pre-register" />
       <LandingContent
         registration={<QuickLaunchForm />}

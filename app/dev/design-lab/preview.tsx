@@ -188,6 +188,7 @@ export function LandingDesignLab() {
       motion={motion}
       panel={panel}
       rounded={rounded}
+      background="landing"
     >
       <div className={styles.previewNotice}>
         <span>

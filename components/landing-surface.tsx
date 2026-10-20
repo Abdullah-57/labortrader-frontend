@@ -1,6 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react';
 import { SiteFrame } from './site-frame';
 import styles from '@/design-system/landing.module.css';
+import type { SiteBackground } from '@/design-system/backgrounds';
 
 /** Preview controls supply overrides; the public homepage uses the approved defaults. */
 export function LandingSurface({
@@ -10,6 +11,7 @@ export function LandingSurface({
   panel = 78,
   rounded = true,
   motion = true,
+  background = 'none',
 }: {
   children: ReactNode;
   tone?: string;
@@ -17,12 +19,14 @@ export function LandingSurface({
   panel?: number;
   rounded?: boolean;
   motion?: boolean;
+  background?: SiteBackground | 'none' | null;
 }) {
   return (
     <SiteFrame
       className={`lt-landing ${styles.landing}`}
       tone={tone}
       motion={motion}
+      background={background}
       style={
         {
           '--lt-photo-opacity': photo / 100,

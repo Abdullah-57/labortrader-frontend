@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 import { COMPANY_PROFILE } from '@/lib/company-profile';
 import { BrandLogo } from './brand-logo';
+import styles from '@/design-system/footer.module.css';
 
 const footerGroups = [
   {
@@ -67,79 +69,87 @@ export function SiteFooter({
   supportingCopy?: string;
 } = {}) {
   return (
-    <footer className="lt-footer lt-surface-dark pb-24 text-background sm:pb-0">
-      <div className="site-shell grid min-w-0 gap-12 py-14 lg:grid-cols-[minmax(13rem,.65fr)_minmax(0,1.35fr)] lg:py-16">
-        <div className="min-w-0">
-          <Link
-            href="/"
-            className="inline-block max-w-full focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#4ea1ff]"
-            aria-label="LaborTrader home"
-          >
-            <BrandLogo
-              appearance="inverse"
-              alt=""
-              className="w-[min(100%,16rem)]"
-              preload
-            />
-          </Link>
-          <p className="mt-5 max-w-xs text-[15px] font-semibold leading-7">
-            The marketplace where skilled labor meets real demand, one market at
-            a time.
-          </p>
-          <p className="text-on-dark-subtle mt-3 max-w-xs text-[13px] leading-6">
-            {supportingCopy}
-          </p>
-          <Link
-            href={ctaHref}
-            className="mt-6 inline-flex min-h-11 items-center text-[13px] font-semibold uppercase tracking-[0.09em] text-primary underline underline-offset-4 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#4ea1ff]"
-          >
-            {ctaLabel}
-          </Link>
-        </div>
-        <nav
-          className="grid min-w-0 grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 xl:grid-cols-5"
-          aria-label="Footer navigation"
-        >
-          {footerGroups.map((group) => (
-            <div key={group.title} className="min-w-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-primary">
-                {group.title}
-              </p>
-              <div className="mt-3">
-                {group.links.map(([label, href]) => (
-                  <Link
-                    key={href}
-                    className="flex min-h-11 items-center text-sm font-semibold leading-5 text-background/82 transition-colors hover:text-primary focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#4ea1ff] lg:min-h-9"
-                    href={href}
-                  >
-                    {label}
-                  </Link>
-                ))}
-              </div>
+    <footer className={styles.footer}>
+      <div className={styles.footerOverlay} aria-hidden="true" />
+
+      <div className={styles.shell}>
+        <div className={styles.mainGrid}>
+          <div className={styles.brandCol}>
+            <Link
+              href="/"
+              className={styles.logoLink}
+              aria-label="LaborTrader home"
+            >
+              <BrandLogo
+                appearance="inverse"
+                alt=""
+                className={styles.brandLogo}
+                preload
+              />
+            </Link>
+            <p className={styles.slogan}>
+              The marketplace where skilled labor meets real demand, one market at a time.
+            </p>
+            <p className={styles.supportingCopy}>
+              {supportingCopy}
+            </p>
+
+            <div className={`${styles.statusBadge} badge badge-outline`}>
+              <span className={styles.statusDot} aria-hidden="true" />
+              <span>Pre-Registration Open Nationwide</span>
             </div>
-          ))}
-        </nav>
+
+            <Link href={ctaHref} className={styles.ctaButton}>
+              <span>{ctaLabel}</span>
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+
+          <nav className={styles.navGrid} aria-label="Footer navigation">
+            {footerGroups.map((group) => (
+              <div key={group.title} className={styles.groupCol}>
+                <p className={styles.groupTitle}>
+                  <span className={styles.kickerDot} aria-hidden="true" />
+                  {group.title}
+                </p>
+                <div className={styles.groupLinks}>
+                  {group.links.map(([label, href]) => (
+                    <Link
+                      key={href}
+                      className={styles.navLink}
+                      href={href}
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </nav>
+        </div>
       </div>
-      <div className="border-t border-background/12">
-        <div className="text-on-dark-subtle site-shell flex min-w-0 flex-col gap-4 py-6 text-[11px] font-semibold sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
-          <p>© 2026 {COMPANY_PROFILE.legalName} All rights reserved.</p>
-          <div className="flex min-w-0 flex-col gap-2 sm:items-end">
-            <address className="not-italic">
-              <span className="font-semibold text-background/78">
-                Mailing address:{' '}
-              </span>
+
+      <div className={styles.bottomBar}>
+        <div className={styles.bottomShell}>
+          <p className={styles.copyright}>
+            © 2026 {COMPANY_PROFILE.legalName} All rights reserved.
+          </p>
+          <div className={styles.bottomRight}>
+            <address className={styles.address}>
+              <span className={styles.addressLabel}>Mailing address: </span>
               {COMPANY_PROFILE.mailingAddress.streetAddress},{' '}
               {COMPANY_PROFILE.mailingAddress.addressLocality},{' '}
               {COMPANY_PROFILE.mailingAddress.addressRegion}{' '}
               {COMPANY_PROFILE.mailingAddress.postalCode}
             </address>
             <a
-              className="min-h-6 font-semibold text-background/78 underline underline-offset-4 transition-colors hover:text-primary focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#4ea1ff]"
+              className={styles.socialLink}
               href={COMPANY_PROFILE.facebookUrl}
               rel="noreferrer"
               target="_blank"
             >
-              LaborTrader on Facebook
+              <span>LaborTrader on Facebook</span>
+              <ArrowUpRight size={13} aria-hidden="true" />
             </a>
           </div>
         </div>

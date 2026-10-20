@@ -16,23 +16,26 @@ export function SiteFrame({
   style,
 }: {
   children: ReactNode;
-  background?: SiteBackground;
+  background?: SiteBackground | 'none' | null;
   reading?: boolean;
   className?: string;
   tone?: string;
   motion?: boolean;
   style?: CSSProperties;
 }) {
-  const image = siteBackgrounds[background];
+  const hasImage = Boolean(background && background !== 'none');
+  const image = hasImage && background ? siteBackgrounds[background as SiteBackground] : null;
   return (
     <div
       className={`lt-site ${className}`}
       data-tone={tone}
       style={style}
-      data-background={background}
+      data-background={background || 'none'}
       data-reading={reading || undefined}
     >
-      <SiteBackdrop src={image.src} position={image.position} motion={motion} />
+      {image && (
+        <SiteBackdrop src={image.src} position={image.position} motion={motion} />
+      )}
       {children}
     </div>
   );

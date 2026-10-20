@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   min-height: 84px;
-  gap: 24px;
+  gap: clamp(24px, 2.5vw, 36px);
 }
 .logo {
   width: 193px;
@@ -44,15 +44,16 @@
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: clamp(20px, 2.2vw, 32px);
 }
 .desktop > a,
 .desktop button {
   display: flex;
   min-height: 44px;
   align-items: center;
-  gap: 5px;
-  font-size: 13px;
+  gap: 6px;
+  padding: 6px 4px;
+  font-size: 13.5px;
   font-weight: 600;
   color: var(--lt-muted);
   white-space: nowrap;
@@ -73,23 +74,45 @@
 }
 .cta {
   display: inline-flex;
-  min-height: 46px;
+  min-height: 44px;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  padding: 12px 18px;
-  border: 1px solid var(--lt-accent);
-  border-radius: var(--lt-control-radius);
-  font-size: 13px;
-  font-weight: 650;
+  gap: 8px;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #e76532 0%, #d45220 100%);
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   white-space: nowrap;
+  box-shadow:
+    0 4px 16px rgba(231, 101, 50, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
   transition:
-    color var(--lt-motion-time),
-    background-color var(--lt-motion-time),
+    background var(--lt-motion-time),
+    box-shadow var(--lt-motion-time),
     transform var(--lt-motion-time);
 }
 .cta svg {
-  color: var(--lt-accent);
+  color: #ffffff !important;
+  transition: transform var(--lt-motion-time);
+}
+.cta:hover {
+  background: linear-gradient(135deg, #f0703d 0%, #dc5927 100%);
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px rgba(231, 101, 50, 0.52),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.cta:hover svg {
+  transform: translate(2px, -2px);
+}
+.cta:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 8px rgba(231, 101, 50, 0.3);
 }
 .toggle {
   display: none;
@@ -255,16 +278,24 @@
   width: min(360px, calc(100% - 40px));
 }
 .dropdown .mobileCta {
-  border: 1px solid var(--lt-accent);
-  margin-top: 10px;
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  margin-top: 12px;
+  background: linear-gradient(135deg, #e76532 0%, #d45220 100%);
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 9px;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(231, 101, 50, 0.35);
 }
-.cta:is(:active, :focus-visible),
+.dropdown .mobileCta svg {
+  color: #ffffff !important;
+}
 .desktop > a:is(:active, :focus-visible) {
   color: var(--lt-accent);
-}
-.cta:active {
-  transform: translateY(2px) scale(0.98);
-  transition-duration: 0s;
 }
 @keyframes itemEnter {
   from {
@@ -278,8 +309,7 @@
 }
 @media (hover: hover) and (pointer: fine) {
   .desktop > a:hover,
-  .desktop button:hover,
-  .cta:hover {
+  .desktop button:hover {
     color: var(--lt-accent);
   }
   .dropdown :is(a, summary):hover {

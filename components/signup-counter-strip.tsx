@@ -59,55 +59,71 @@ export function SignupCounterStrip({
       className="signup-counter-strip lt-counter"
       aria-label={`${label} Pre-registration activity`}
     >
-      <div className="site-shell lt-counter-grid">
-        <div>
-          <p className="lt-counter-eyebrow">The marketplace starts with you</p>
-          <h2 className="lt-counter-title">{label}</h2>
-          <p className="lt-counter-caption">
-            Pre-registration is open nationwide.
-          </p>
-        </div>
-        {available && counts ? (
-          <dl className="lt-counter-stats">
-            {(
-              [
-                ['signups', 'Signups'],
-                ['states', 'States'],
-                ['specialties', 'Specialties'],
-              ] as const
-            ).map(([key, title]) => (
-              <div key={key}>
-                <dt>{title}</dt>
-                <dd>
-                  <span className="sr-only">
-                    {counts[key].toLocaleString('en-US')}
-                  </span>
-                  <span aria-hidden="true">
-                    {Math.max(
-                      counts[key] > 0 ? 1 : 0,
-                      Math.round(counts[key] * progress),
-                    ).toLocaleString('en-US')}
-                  </span>
-                </dd>
-              </div>
-            ))}
-          </dl>
-        ) : (
-          <div className="lt-counter-stats lt-counter-invite">
-            <p className="lt-counter-invite-copy">
-              Public signup totals appear once at least{' '}
-              {displayMinimum.toLocaleString('en-US')} basic pre-registration
-              {displayMinimum === 1 ? ' is' : 's are'} counted — including before
-              email confirmation. Join now to be part of the count. Completing
-              your detailed profile is what qualifies you for free-use
-              eligibility.
+      <div className="site-shell">
+        <div className="lt-counter-section">
+          <div className="lt-counter-header">
+            <p className="lt-counter-eyebrow">The marketplace starts with you</p>
+            <h2 className="lt-counter-title">
+              {label.toLowerCase().includes('on the map') ? (
+                <>
+                  Put your trade{' '}
+                  <em className="lt-counter-title-accent">on the map.</em>
+                </>
+              ) : (
+                label
+              )}
+            </h2>
+            <p className="lt-counter-caption">
+              Pre-registration is open nationwide.
             </p>
           </div>
-        )}
-        <Link href={href} className="button-primary lt-counter-cta">
-          {available ? 'Join the Count' : 'Reserve your spot'}{' '}
-          <ArrowUpRight className="size-4" aria-hidden="true" />
-        </Link>
+          {available && counts ? (
+            <dl className="lt-counter-stats stats stats-horizontal">
+              {(
+                [
+                  ['signups', 'Signups'],
+                  ['states', 'States'],
+                  ['specialties', 'Specialties'],
+                ] as const
+              ).map(([key, title]) => (
+                <div key={key} className="lt-counter-stat-item stat">
+                  <dd className="lt-counter-stat-value stat-value">
+                    <span className="sr-only">
+                      {counts[key].toLocaleString('en-US')}
+                    </span>
+                    <span aria-hidden="true" className="lt-counter-number">
+                      {Math.max(
+                        counts[key] > 0 ? 1 : 0,
+                        Math.round(counts[key] * progress),
+                      ).toLocaleString('en-US')}
+                    </span>
+                  </dd>
+                  <dt className="lt-counter-stat-label stat-title">{title}</dt>
+                </div>
+              ))}
+            </dl>
+          ) : (
+            <div className="lt-counter-invite">
+              <p className="lt-counter-invite-copy">
+                Public signup totals appear once at least{' '}
+                {displayMinimum.toLocaleString('en-US')} basic pre-registration
+                {displayMinimum === 1 ? ' is' : 's are'} counted — including before
+                email confirmation. Join now to be part of the count. Completing
+                your detailed profile is what qualifies you for free-use
+                eligibility.
+              </p>
+            </div>
+          )}
+          <div className="lt-counter-actions">
+            <Link
+              href={href}
+              className="btn btn-primary lt-counter-cta"
+            >
+              <span>{available ? 'Join the Count' : 'Reserve your spot'}</span>
+              <ArrowUpRight className="size-4 shrink-0 transition-transform duration-200" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
       </div>
     </aside>
   );

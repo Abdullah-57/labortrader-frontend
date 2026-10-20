@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@plugin "daisyui";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -52,11 +53,11 @@
   --color-ring: var(--ring);
   --font-sans: var(--font-body);
   --font-heading: var(--font-display);
-  --radius-sm: 0;
-  --radius-md: 0;
-  --radius-lg: 0;
-  --radius-xl: 0;
-  --radius-2xl: 0;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
 }
 
 :root {
@@ -533,7 +534,7 @@
 
   .form-input {
     height: 3rem;
-    border-radius: 0;
+    border-radius: 8px;
     background: rgb(243 237 223 / 52%);
     padding-inline: 0.85rem;
   }
@@ -544,7 +545,7 @@
 
   .form-select select {
     height: 3rem;
-    border-radius: 0;
+    border-radius: 8px;
     background: rgb(243 237 223 / 52%);
     padding-inline: 0.85rem 2.5rem;
   }

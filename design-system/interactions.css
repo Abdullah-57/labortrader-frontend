@@ -134,13 +134,17 @@
   min-width: 0;
 }
 .lt-site .lt-quick-registration {
-  padding: 30px;
+  padding: 32px;
   color: var(--lt-ink);
-  background: rgba(var(--lt-panel-rgb), 0.78);
-  border-top-color: rgb(255 255 255 / 35%);
+  background: rgba(22, 25, 30, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 20px;
+  backdrop-filter: blur(24px);
   box-shadow:
-    0 30px 75px rgb(0 0 0 / 17%),
-    inset 0 1px 0 rgb(255 255 255 / 5%);
+    0 24px 64px rgba(0, 0, 0, 0.45),
+    0 6px 18px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .lt-form-heading > strong {
   font-size: 11px;
@@ -150,13 +154,15 @@
 }
 .lt-form-progress {
   display: flex;
-  gap: 5px;
-  margin-top: 17px;
+  gap: 6px;
+  margin-top: 16px;
 }
 .lt-form-progress > span {
   flex: 1;
-  height: 2px;
-  background: var(--lt-border);
+  height: 3px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.12);
+  transition: background 0.2s ease;
 }
 .lt-form-progress > span[data-active='true'] {
   background: var(--lt-accent);
@@ -267,7 +273,8 @@
 }
 @media (max-width: 600px) {
   .lt-site .lt-quick-registration {
-    padding: 22px;
+    padding: 22px 18px;
+    border-radius: 16px;
   }
   .lt-site .lt-form-title {
     font-size: 28px;

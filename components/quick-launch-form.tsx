@@ -601,7 +601,7 @@ function QuickLaunchFormContent() {
           <Button
             type="button"
             onClick={continueFromMarket}
-            className="mt-6 min-h-12 w-full rounded-none bg-primary text-xs font-black uppercase tracking-[0.09em] text-primary-foreground hover:bg-foreground hover:text-background"
+            className="mt-6 min-h-12 w-full rounded-lg bg-primary text-xs font-black uppercase tracking-[0.09em] text-primary-foreground hover:bg-foreground hover:text-background shadow-md"
           >
             <span>Continue &amp; Choose My Path</span>{' '}
             <ArrowRight aria-hidden="true" />
@@ -683,14 +683,14 @@ function QuickLaunchFormContent() {
               type="button"
               variant="outline"
               onClick={() => goBack(1)}
-              className="min-h-12 rounded-none border-foreground/30 bg-transparent px-5 text-xs font-black uppercase tracking-[0.09em]"
+              className="min-h-12 rounded-lg border-foreground/30 bg-transparent px-5 text-xs font-black uppercase tracking-[0.09em]"
             >
               <ArrowLeft aria-hidden="true" /> Back
             </Button>
             <Button
               type="button"
               onClick={continueFromRole}
-              className="min-h-12 rounded-none bg-primary text-xs font-black uppercase tracking-[0.09em] text-primary-foreground hover:bg-foreground hover:text-background"
+              className="min-h-12 rounded-lg bg-primary text-xs font-black uppercase tracking-[0.09em] text-primary-foreground hover:bg-foreground hover:text-background shadow-md"
             >
               Add my contact details <ArrowRight aria-hidden="true" />
             </Button>
@@ -756,7 +756,7 @@ function QuickLaunchFormContent() {
             </div>
           </div>
 
-          <dl className="lt-registration-summary mt-5 grid grid-cols-3 border border-foreground/12">
+          <dl className="lt-registration-summary mt-5 grid grid-cols-3 rounded-lg border border-foreground/12 overflow-hidden">
             <div className="min-w-0 border-r border-foreground/12 p-3">
               <dt className="text-[9px] font-black uppercase tracking-[0.12em] text-muted-foreground">
                 Market
@@ -783,7 +783,7 @@ function QuickLaunchFormContent() {
             </div>
           </dl>
 
-          <div className="mt-5 flex min-w-0 items-start gap-3 border border-input bg-white/[0.03] p-4 text-xs leading-5 text-muted-foreground">
+          <div className="mt-5 flex min-w-0 items-start gap-3 rounded-lg border border-input bg-white/[0.03] p-4 text-xs leading-5 text-muted-foreground">
             <Checkbox
               id="quick-registration-acknowledgement"
               checked={registrationAcknowledged}
@@ -855,14 +855,14 @@ function QuickLaunchFormContent() {
               type="button"
               variant="outline"
               onClick={() => goBack(2)}
-              className="min-h-12 rounded-none border-foreground/30 bg-transparent px-5 text-xs font-black uppercase tracking-[0.09em]"
+              className="min-h-12 rounded-lg border-foreground/30 bg-transparent px-5 text-xs font-black uppercase tracking-[0.09em]"
             >
               <ArrowLeft aria-hidden="true" /> Back
             </Button>
             <Button
               type="submit"
               disabled={submitting}
-              className="min-h-12 whitespace-normal rounded-none bg-primary px-5 py-3 text-center text-xs font-black uppercase tracking-[0.09em] text-primary-foreground hover:bg-foreground hover:text-background"
+              className="min-h-12 whitespace-normal rounded-lg bg-primary px-5 py-3 text-center text-xs font-black uppercase tracking-[0.09em] text-primary-foreground hover:bg-foreground hover:text-background shadow-md"
             >
               {submitting ? 'Saving…' : 'Submit my pre-registration'}
               {!submitting && <ArrowRight aria-hidden="true" />}
