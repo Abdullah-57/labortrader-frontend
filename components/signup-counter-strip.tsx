@@ -2,12 +2,37 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, MapPin, Users, Wrench } from 'lucide-react';
 import {
   DEFAULT_PUBLIC_COUNTER_DISPLAY_MINIMUM,
   publicCountsAreVisible,
   type SignupCounts,
 } from '@/lib/signup-counts-domain';
+import styles from '@/design-system/signup-counter.module.css';
+
+const STAT_CONFIG = [
+  {
+    key: 'signups' as const,
+    title: 'Signups',
+    desc: 'Early trade accounts',
+    pill: 'VERIFIED',
+    icon: Users,
+  },
+  {
+    key: 'states' as const,
+    title: 'States',
+    desc: 'Coast-to-coast coverage',
+    pill: 'NATIONWIDE',
+    icon: MapPin,
+  },
+  {
+    key: 'specialties' as const,
+    title: 'Specialties',
+    desc: 'Skilled trade categories',
+    pill: 'DISCIPLINES',
+    icon: Wrench,
+  },
+] as const;
 
 export function SignupCounterStrip({
   counts,
@@ -23,6 +48,7 @@ export function SignupCounterStrip({
   const strip = useRef<HTMLElement>(null);
   const [progress, setProgress] = useState(1);
   const available = publicCountsAreVisible(counts, displayMinimum);
+
   useEffect(() => {
     const element = strip.current;
     if (
@@ -44,7 +70,7 @@ export function SignupCounterStrip({
         };
         frame = requestAnimationFrame(animate);
       },
-      { threshold: 0.3 },
+      { threshold: 0.25 },
     );
     observer.observe(element);
     return () => {
@@ -56,55 +82,76 @@ export function SignupCounterStrip({
   return (
     <aside
       ref={strip}
-      className="signup-counter-strip lt-counter"
+      className={`signup-counter-strip ${styles.counterSection}`}
       aria-label={`${label} Pre-registration activity`}
     >
+      <div className={styles.ambientOverlay} aria-hidden="true" />
+
       <div className="site-shell">
-        <div className="lt-counter-section">
-          <div className="lt-counter-header">
-            <p className="lt-counter-eyebrow">The marketplace starts with you</p>
-            <h2 className="lt-counter-title">
+        <div className={styles.counterContent}>
+          {/* Header Area */}
+          <div className={styles.header}>
+            <div className={styles.kickerBadge}>
+              <span className={styles.kickerDotWrapper} aria-hidden="true">
+                <span className={styles.kickerDotPing} />
+                <span className={styles.kickerDotCore} />
+              </span>
+              <p className={styles.kickerText}>The marketplace starts with you</p>
+            </div>
+
+            <h2 className={styles.title}>
               {label.toLowerCase().includes('on the map') ? (
                 <>
                   Put your trade{' '}
-                  <em className="lt-counter-title-accent">on the map.</em>
+                  <em className={styles.titleAccent}>on the map.</em>
                 </>
               ) : (
                 label
               )}
             </h2>
-            <p className="lt-counter-caption">
-              Pre-registration is open nationwide.
-            </p>
+
+            <p className={styles.caption}>Pre-registration is open nationwide.</p>
           </div>
+
+          {/* Stats Display */}
           {available && counts ? (
-            <dl className="lt-counter-stats stats stats-horizontal">
-              {(
-                [
-                  ['signups', 'Signups'],
-                  ['states', 'States'],
-                  ['specialties', 'Specialties'],
-                ] as const
-              ).map(([key, title]) => (
-                <div key={key} className="lt-counter-stat-item stat">
-                  <dd className="lt-counter-stat-value stat-value">
-                    <span className="sr-only">
-                      {counts[key].toLocaleString('en-US')}
+            <dl
+              className={`${styles.statsContainer} stats stats-vertical md:stats-horizontal !overflow-visible`}
+            >
+              {STAT_CONFIG.map(({ key, title, desc, pill, icon: Icon }) => (
+                <div key={key} className={`${styles.statCard} stat group`}>
+                  <div className={styles.statCardSheen} aria-hidden="true" />
+
+                  <div className={styles.statTopRow}>
+                    <div className={`${styles.statIconBox} stat-figure`}>
+                      <Icon size={18} aria-hidden="true" />
+                    </div>
+                    <span className={`${styles.statPill} badge badge-xs badge-ghost`}>
+                      {pill}
                     </span>
-                    <span aria-hidden="true" className="lt-counter-number">
-                      {Math.max(
-                        counts[key] > 0 ? 1 : 0,
-                        Math.round(counts[key] * progress),
-                      ).toLocaleString('en-US')}
-                    </span>
-                  </dd>
-                  <dt className="lt-counter-stat-label stat-title">{title}</dt>
+                  </div>
+
+                  <div className={styles.statContentCol}>
+                    <dd className={`${styles.statValue} stat-value`}>
+                      <span className="sr-only">
+                        {counts[key].toLocaleString('en-US')}
+                      </span>
+                      <span aria-hidden="true">
+                        {Math.max(
+                          counts[key] > 0 ? 1 : 0,
+                          Math.round(counts[key] * progress),
+                        ).toLocaleString('en-US')}
+                      </span>
+                    </dd>
+                    <dt className={`${styles.statLabel} stat-title`}>{title}</dt>
+                    <span className={`${styles.statDesc} stat-desc`}>{desc}</span>
+                  </div>
                 </div>
               ))}
             </dl>
           ) : (
-            <div className="lt-counter-invite">
-              <p className="lt-counter-invite-copy">
+            <div className={styles.fallbackCard}>
+              <p className={styles.fallbackCopy}>
                 Public signup totals appear once at least{' '}
                 {displayMinimum.toLocaleString('en-US')} basic pre-registration
                 {displayMinimum === 1 ? ' is' : 's are'} counted — including before
@@ -114,14 +161,22 @@ export function SignupCounterStrip({
               </p>
             </div>
           )}
-          <div className="lt-counter-actions">
+
+          {/* Action Dock */}
+          <div className={styles.actionsArea}>
             <Link
               href={href}
-              className="btn btn-primary lt-counter-cta"
+              className={`${styles.ctaButton} btn btn-primary`}
             >
               <span>{available ? 'Join the Count' : 'Reserve your spot'}</span>
-              <ArrowUpRight className="size-4 shrink-0 transition-transform duration-200" aria-hidden="true" />
+              <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
+
+            <p className={styles.actionNote}>
+              <span>No membership fees</span>
+              <span className={styles.actionNoteDot} aria-hidden="true" />
+              <span>90 days free platform use upon launch</span>
+            </p>
           </div>
         </div>
       </div>

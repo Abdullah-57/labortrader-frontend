@@ -1,0 +1,480 @@
+.counterSection {
+  position: relative;
+  /* Seamless dark industrial canvas blending with hero and why sections */
+  background: #181a1d;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-block: clamp(56px, 7vw, 92px);
+  overflow: visible;
+  isolation: isolate;
+}
+
+/* Subtle ambient backdrop light that softly ties into the safety orange palette */
+.ambientOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(231, 101, 50, 0.07), transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(18, 20, 23, 0.8), transparent 70%);
+}
+
+.counterContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+/* Header Area */
+.header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 780px;
+  margin-inline: auto;
+}
+
+.kickerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.kickerDotWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8px;
+  height: 8px;
+}
+
+.kickerDotPing {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #e76532;
+  opacity: 0.75;
+  animation: dotPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.kickerDotCore {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e76532;
+  box-shadow: 0 0 6px #e76532;
+}
+
+.kickerText {
+  margin: 0;
+  font-size: 11.5px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e76532;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(32px, 4.4vw, 52px);
+  font-weight: 850;
+  line-height: 1.14;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+}
+
+.titleAccent {
+  font-style: italic;
+  font-weight: 850;
+  color: #e76532;
+  font-family: inherit;
+}
+
+.caption {
+  margin-top: 12px;
+  margin-bottom: 0;
+  color: #94a3b8;
+  font-size: clamp(14.5px, 1.25vw, 16.5px);
+  line-height: 1.6;
+  font-weight: 500;
+  max-width: 580px;
+}
+
+/* Stats Section (The 3 Tactile Stat Cards) */
+.statsContainer {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 960px;
+  margin-top: clamp(28px, 3.8vw, 44px);
+  padding-top: 16px; /* Headroom space so elevated cards are never clipped */
+  padding-bottom: 8px;
+  padding-inline: 4px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2.5vw, 28px);
+  overflow: visible !important;
+}
+
+/* Ensure daisyUI .stats does not apply overflow clipping or scrollbars */
+:global(.stats).statsContainer,
+.statsContainer:global(.stats) {
+  overflow: visible !important;
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+}
+
+.statCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: clamp(26px, 3vw, 36px) clamp(18px, 2.2vw, 28px);
+  border-radius: 20px;
+  background: rgba(26, 31, 40, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 14px 36px -10px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition:
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.28s ease,
+    background-color 0.28s ease,
+    box-shadow 0.28s ease;
+  overflow: hidden;
+}
+
+.statCard:hover {
+  transform: translateY(-4px);
+  background: rgba(30, 36, 48, 0.9);
+  border-color: rgba(231, 101, 50, 0.55);
+  border-top-color: #e76532; /* Guarantee prominent top border visibility on hover */
+  box-shadow:
+    0 20px 44px -8px rgba(0, 0, 0, 0.75),
+    0 0 24px -4px rgba(231, 101, 50, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.statCardSheen {
+  position: absolute;
+  top: 1px; /* Offset so it does not cover or override the 1px top border */
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transition: background 0.28s ease;
+  pointer-events: none;
+}
+
+.statCard:hover .statCardSheen {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 100%
+  );
+}
+
+.statTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.statIconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(40, 46, 58, 0.8) 0%, rgba(24, 28, 36, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e76532;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.statCard:hover .statIconBox {
+  transform: scale(1.08);
+  border-color: rgba(231, 101, 50, 0.45);
+}
+
+.statPill {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  color: #8fa0b5;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.statValue {
+  margin: 0;
+  padding: 0;
+  font-size: clamp(46px, 5.5vw, 70px);
+  font-weight: 900;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  transition: color 0.2s ease;
+}
+
+.statCard:hover .statValue {
+  color: #fcfbf9;
+}
+
+.statLabel {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #cbd5e1;
+  transition: color 0.2s ease;
+}
+
+.statCard:hover .statLabel {
+  color: #ffffff;
+}
+
+.statDesc {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #718096;
+}
+
+/* Fallback Notice */
+.fallbackCard {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 720px;
+  margin-top: 32px;
+  padding: 24px 28px;
+  border-radius: 16px;
+  background: rgba(26, 31, 40, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.fallbackCopy {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 14.5px;
+  line-height: 1.65;
+  text-align: center;
+}
+
+/* Actions Section */
+.actionsArea {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: clamp(36px, 4.5vw, 48px);
+  gap: 12px;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 13px 36px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #e76532 0%, #d45220 100%);
+  color: #ffffff !important;
+  font-size: 15.5px;
+  font-weight: 750;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 6px 20px rgba(231, 101, 50, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition:
+    transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.22s ease,
+    background 0.22s ease;
+  cursor: pointer;
+}
+
+.ctaButton:hover {
+  background: linear-gradient(135deg, #f06f3c 0%, #dc5824 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 28px rgba(231, 101, 50, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.ctaButton:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 14px rgba(231, 101, 50, 0.3);
+}
+
+.ctaButton svg {
+  color: #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.ctaButton:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.actionNote {
+  margin: 0;
+  font-size: 12px;
+  color: #718096;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.actionNoteDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #718096;
+}
+
+@keyframes dotPing {
+  75%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 840px) {
+  .statsContainer {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .statCard {
+    padding: 20px 12px;
+  }
+  .statIconBox {
+    width: 34px;
+    height: 34px;
+  }
+  .statIconBox svg {
+    width: 16px;
+    height: 16px;
+  }
+  .statPill {
+    display: none;
+  }
+  .statTopRow {
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .statValue {
+    font-size: clamp(34px, 5.5vw, 44px);
+  }
+  .statLabel {
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  .statDesc {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 600px) {
+  .counterSection {
+    padding-block: 48px;
+  }
+  .statsContainer {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .statCard {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    text-align: left;
+  }
+  .statTopRow {
+    width: auto;
+    margin-bottom: 0;
+    gap: 12px;
+  }
+  .statPill {
+    display: inline-block;
+  }
+  .statContentCol {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .statValue {
+    font-size: 36px;
+    text-align: right;
+  }
+  .statLabel {
+    margin-top: 0;
+    font-size: 13px;
+  }
+  .statDesc {
+    font-size: 11px;
+  }
+  .ctaButton {
+    width: 100%;
+    padding: 13px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kickerDotPing {
+    animation: none;
+  }
+  .statCard,
+  .ctaButton,
+  .ctaButton svg,
+  .statIconBox {
+    transition: none !important;
+    transform: none !important;
+  }
+}

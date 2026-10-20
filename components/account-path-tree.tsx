@@ -92,7 +92,7 @@ export function AccountPathTree() {
                     />
                     {/* Vertical Drop Line to Card 0 */}
                     <div
-                      className={`absolute top-1/2 bottom-[-10px] left-1/2 -translate-x-1/2 w-0.5 transition-colors duration-200 z-10 ${
+                      className={`absolute top-1/2 bottom-[9px] left-1/2 -translate-x-1/2 w-0.5 transition-colors duration-200 z-10 ${
                         isTarget
                           ? 'bg-[#e76532] shadow-[0_0_8px_rgba(231,101,50,0.8)]'
                           : 'bg-white/15'
@@ -130,7 +130,7 @@ export function AccountPathTree() {
                     />
                     {/* Vertical Drop Line to Card 1 */}
                     <div
-                      className={`absolute top-1/2 bottom-[-10px] left-1/2 -translate-x-1/2 w-0.5 transition-colors duration-200 z-10 ${
+                      className={`absolute top-1/2 bottom-[9px] left-1/2 -translate-x-1/2 w-0.5 transition-colors duration-200 z-10 ${
                         isTarget
                           ? 'bg-[#e76532] shadow-[0_0_8px_rgba(231,101,50,0.8)]'
                           : 'bg-white/15'
@@ -176,7 +176,7 @@ export function AccountPathTree() {
                     />
                     {/* Vertical Drop Line to Card 2 */}
                     <div
-                      className={`absolute top-1/2 bottom-[-10px] left-1/2 -translate-x-1/2 w-0.5 transition-colors duration-200 z-10 ${
+                      className={`absolute top-1/2 bottom-[9px] left-1/2 -translate-x-1/2 w-0.5 transition-colors duration-200 z-10 ${
                         isTarget
                           ? 'bg-[#e76532] shadow-[0_0_8px_rgba(231,101,50,0.8)]'
                           : 'bg-white/15'
@@ -214,7 +214,7 @@ export function AccountPathTree() {
                     />
                     {/* Vertical Drop Line to Card 3 */}
                     <div
-                      className={`absolute top-1/2 bottom-[-10px] left-1/2 -translate-x-1/2 w-0.5 transition-colors duration-200 z-10 ${
+                      className={`absolute top-1/2 bottom-[9px] left-1/2 -translate-x-1/2 w-0.5 transition-colors duration-200 z-10 ${
                         isTarget
                           ? 'bg-[#e76532] shadow-[0_0_8px_rgba(231,101,50,0.8)]'
                           : 'bg-white/15'
@@ -244,7 +244,7 @@ export function AccountPathTree() {
                     />
                     {/* Vertical Drop Line to Card 4 */}
                     <div
-                      className={`absolute top-1/2 bottom-[-10px] left-1/2 -translate-x-1/2 w-0.5 transition-colors duration-200 z-10 ${
+                      className={`absolute top-1/2 bottom-[9px] left-1/2 -translate-x-1/2 w-0.5 transition-colors duration-200 z-10 ${
                         isTarget
                           ? 'bg-[#e76532] shadow-[0_0_8px_rgba(231,101,50,0.8)]'
                           : 'bg-white/15'
@@ -278,16 +278,16 @@ export function AccountPathTree() {
                 onMouseLeave={() => setHoveredIndex(null)}
                 className={`group relative flex flex-col justify-between rounded-2xl p-4 xl:p-5 border transition-all duration-300 cursor-pointer ${
                   isHovered
-                    ? 'border-[#e76532] bg-[#1a1d23] shadow-[0_12px_32px_rgba(231,101,50,0.22)] -translate-y-1.5'
+                    ? 'border-[#e76532] bg-[#1a1d23] shadow-[0_0_24px_rgba(231,101,50,0.24),0_12px_32px_rgba(0,0,0,0.5)]'
                     : 'border-white/12 bg-[#15181d] hover:border-white/25 hover:bg-[#181b21]'
                 }`}
               >
-                {/* Top Intake Connection Port (Fully visible and unclipped) */}
+                {/* Top Intake Connection Port (Naturally connects to drop line) */}
                 <div
-                  className={`absolute -top-2.5 left-1/2 -translate-x-1/2 size-5 rounded-full border-2 transition-all duration-200 flex items-center justify-center z-20 ${
+                  className={`absolute -top-2.5 left-1/2 -translate-x-1/2 size-5 rounded-full border-2 transition-all duration-200 flex items-center justify-center z-30 ${
                     isHovered
                       ? 'border-[#e76532] bg-[#1d1815] shadow-[0_0_12px_rgba(231,101,50,0.8)] scale-110'
-                      : 'border-white/15 bg-[#15171b]'
+                      : 'border-white/20 bg-[#15171b]'
                   }`}
                   aria-hidden="true"
                 >

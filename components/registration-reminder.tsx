@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, X } from 'lucide-react';
+import { ArrowUpRight, X } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   dueRegistrationReminder,
@@ -111,36 +111,52 @@ export function RegistrationReminder({
       </output>
       {visible > 0 && (
         <aside
-          className={styles.reminder}
+          className={`${styles.reminder} card`}
           aria-labelledby="registration-reminder-title"
           data-reminder-stage={visible}
         >
-          <button
-            type="button"
-            onClick={() => dismiss()}
-            className={styles.close}
-            aria-label="Dismiss signup reminder"
-          >
-            <X size={20} aria-hidden="true" />
-          </button>
-          <p className={styles.eyebrow}>
-            {visible === 1 ? 'Get in early' : 'Make your next move'}
-          </p>
-          <h2 id="registration-reminder-title" className={styles.title}>
-            90 days <span>free.</span>
-          </h2>
-          <p className={styles.copy}>
-            {visible === 1
-              ? 'More work. More hands. More money. Sign up now for 90 days of free platform use when your market launches.'
-              : 'Turn open days into paid work. Find skilled help when you need it. Sign up now and claim your 90-day launch benefit.'}
-          </p>
+          <div className={styles.reminderGlow} aria-hidden="true" />
+
+          <div className={styles.headerBar}>
+            <div className={styles.kickerRow}>
+              <span className={styles.kickerDot} aria-hidden="true" />
+              <p className={styles.eyebrow}>
+                {visible === 1 ? 'Get in early' : 'Make your next move'}
+              </p>
+              <span className={`${styles.launchBadge} badge badge-outline`}>
+                Launch Benefit
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => dismiss()}
+              className={styles.close}
+              aria-label="Dismiss signup reminder"
+            >
+              <X size={15} aria-hidden="true" />
+            </button>
+          </div>
+
+          <div className={styles.contentBody}>
+            <h2 id="registration-reminder-title" className={styles.title}>
+              90 days <span>free.</span>
+            </h2>
+            <p className={styles.copy}>
+              {visible === 1
+                ? 'More work. More hands. More money. Sign up now for 90 days of free platform use when your market launches.'
+                : 'Turn open days into paid work. Find skilled help when you need it. Sign up now and claim your 90-day launch benefit.'}
+            </p>
+          </div>
+
           <Link
             href="#pre-register"
             onClick={() => dismiss(true)}
             className={styles.cta}
           >
-            Sign up for 90 days free <ArrowRight size={18} aria-hidden="true" />
+            <span>Sign up for 90 days free</span>
+            <ArrowUpRight size={17} aria-hidden="true" />
           </Link>
+
           <div className={styles.footer}>
             <span>Pre-registration is open nationwide.</span>
             <Link href="/launch-benefits" onClick={() => dismiss(true)}>
